@@ -29,8 +29,16 @@ class Input:
 
 
 def create_output(res: "TextIOWrapper") -> Callable[[str], None]:
-    def print_to_file(line: str = "", *args, **kwargs) -> None:
-        print(line, *args, **kwargs, file=res)
+    _conf = [True]
+    
+    def print_to_file(line: str = "", __c=_conf, *args, **kwargs) -> None:
+        if not __c[0]:
+            print(file=res)
+        else:
+            __c[0] = False
+
+        end = kwargs.pop("end", "")
+        print(line, file=res, end=end, *args, **kwargs)
 
     return print_to_file
 
@@ -64,9 +72,6 @@ def solve_to_file(filepath: str) -> None:
         out = create_output(res)
 
         solve(inp, out)
-
-        res.truncate(res.tell() - 1)  # remove last newline
-
 
 @timer
 def solve_to_stdout(filepath: str) -> None:

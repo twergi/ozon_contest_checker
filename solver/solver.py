@@ -11,13 +11,13 @@ def solve(input: Callable[[], str], output: Callable[[str], None]) -> None:
     ...
 
 
-""" -------------------- EXAMPLE --------------------
+
     N = int(input().strip())
 
     for _ in range(N):
         ships = [int(x) for x in input().split()]
         res = run(ships)
-        print(res)
+        output(res)
 
 
 def run(ships: list[int]) -> str:
@@ -31,4 +31,4 @@ def run(ships: list[int]) -> str:
             return "NO"
 
     return "YES"
-"""
+
