@@ -30,7 +30,7 @@ class Input:
 
 def create_output(res: "TextIOWrapper") -> Callable[[str], None]:
     _conf = [True]
-    
+
     def print_to_file(line: str = "", __c=_conf, *args, **kwargs) -> None:
         if not __c[0]:
             print(file=res)
@@ -72,6 +72,7 @@ def solve_to_file(filepath: str) -> None:
         out = create_output(res)
 
         solve(inp, out)
+
 
 @timer
 def solve_to_stdout(filepath: str) -> None:

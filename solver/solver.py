@@ -10,8 +10,6 @@ def solve(input: Callable[[], str], output: Callable[[str], None]) -> None:
     """
     ...
 
-
-
     N = int(input().strip())
 
     for _ in range(N):
@@ -31,4 +29,3 @@ def run(ships: list[int]) -> str:
             return "NO"
 
     return "YES"
-
